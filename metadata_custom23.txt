@@ -1,0 +1,11 @@
+en-US-DavisNeural.mp3
+Fake_Dave.mp3
+vad_23_vbj9tOXCBu0.wav
+fake_obama.wav
+vad_39_4jhJPdJPorY.wav
+vad_01_zVVCun3C-oU.wav
+vad_13_vbj9tOXCBu0.wav
+vad_21_vbj9tOXCBu0.wav
+vad_24_Au_bch7bnvE.wav
+Dwayne-Johnson-sample.wav
+vad_01_hlzbjwPRNY4.wav

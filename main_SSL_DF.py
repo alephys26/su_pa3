@@ -88,6 +88,12 @@ def train_epoch(train_loader, model, lr,optim, device):
         
         batch_x = batch_x.to(device)
         batch_y = batch_y.view(-1).type(torch.int64).to(device)
+        allocated_memory = torch.cuda.memory_allocated()
+        print(f"Current GPU memory allocated: {allocated_memory / 1024**2} MB")
+
+		# Get the peak GPU memory allocated
+        peak_memory = torch.cuda.max_memory_allocated()
+        print(f"Peak GPU memory allocated: {peak_memory / 1024**2} MB")
         batch_out = model(batch_x)
         
         batch_loss = criterion(batch_out, batch_y)
@@ -230,14 +236,14 @@ if __name__ == '__main__':
     #set model save directory
     if not os.path.exists(model_save_path):
         os.mkdir(model_save_path)
-    
+        
     #GPU device
-    device = 'cuda'                  
+    device = 'cpu'                  
     print('Device: {}'.format(device))
-    
-    model = Model(args,device)
+
+    model = Model(args,'cuda')
     nb_params = sum([param.view(-1).size()[0] for param in model.parameters()])
-    model =nn.DataParallel(model).to(torch.device(device))
+    model = nn.DataParallel(model).to(torch.device('cuda'))
     print('nb_params:',nb_params)
 
     #set Adam optimizer
@@ -246,8 +252,8 @@ if __name__ == '__main__':
     if args.model_path:
         model.load_state_dict(torch.load(args.model_path,map_location=device))
         print('Model loaded : {}'.format(args.model_path))
-
-
+	
+    model = model.module.to(torch.device('cpu'))
     #evaluation 
     if args.eval:
         file_eval = genSpoof_list( dir_meta =  args.protocols_path, is_train=False,is_eval=True)

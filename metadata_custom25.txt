@@ -1,0 +1,11 @@
+full_-MNf1YAjOv08Blxke9e7.mp3
+vad_03_ZWNArvn5-_Y.wav
+Emotions.mp3
+vad_61_bn1mwPZmRJo.wav
+vad_00_akbwr49hP0A.wav
+vad_07_4jhJPdJPorY.wav
+vad_03_4jhJPdJPorY.wav
+carla_pt.wav
+vad_16_ZWNArvn5-_Y.wav
+Training+Voices.mp3
+vad_28_vbj9tOXCBu0.wav

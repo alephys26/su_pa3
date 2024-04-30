@@ -1,6 +1,7 @@
 import random
 from typing import Union
 
+import fairseq.checkpoint_utils
 import numpy as np
 import torch
 import torch.nn as nn
@@ -20,9 +21,9 @@ __email__ = "tak@eurecom.fr"
 class SSLModel(nn.Module):
     def __init__(self,device):
         super(SSLModel, self).__init__()
-        
-        cp_path = 'xlsr2_300m.pt'   # Change the pre-trained XLSR model path. 
+        cp_path = 'models/xlsr2_300m.pt'
         model, cfg, task = fairseq.checkpoint_utils.load_model_ensemble_and_task([cp_path])
+
         self.model = model[0]
         self.device=device
         self.out_dim = 1024

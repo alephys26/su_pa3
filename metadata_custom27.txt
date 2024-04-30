@@ -1,0 +1,11 @@
+Fake_GlindaAIClonedVoice.mp3
+Central Avenue 7.wav
+vad_01_hq7fDV3zyKg.wav
+vad_44_4jhJPdJPorY.wav
+vad_21_SD23tzTVnKM.wav
+vad_119_Au_bch7bnvE.wav
+vad_33_4jhJPdJPorY.wav
+Arthur+UK.wav
+vad_26_vbj9tOXCBu0.wav
+vad_00_doiBdZCkEWQ.wav
+full_-MiaHAb7oKxrafkHwoPr.wav

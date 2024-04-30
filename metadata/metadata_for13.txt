@@ -1,0 +1,11 @@
+file493.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1958.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file357.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1800.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file805.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1725.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1994.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1650.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1816.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file1409.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file820.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav

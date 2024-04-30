@@ -1,0 +1,5 @@
+file1654.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file322.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file207.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file685.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav
+file973.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav

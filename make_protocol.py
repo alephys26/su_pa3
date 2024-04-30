@@ -5,14 +5,16 @@ def list_of_strings(arg):
     return arg.split(',')
 
 def make_protocol(args):
-    with open("protocol.txt", "w") as f:
+    with open("protocol/protocol_test_for.txt", "a+") as f:
         for directories in args.in_dir:
-            if args.real:
+            if args.real=="True":
                 for file in os.listdir(directories):
-                    f.write("XYZ " + file[:-4] +" - " + " - " + " bonafide" +"\n")
-            else:
+                    if file[-3:] == 'wav' or file[-3:]=='mp3':
+                        f.write('real_'+file +" bonafide" +"\n")
+            elif args.real=="False":
                 for file in os.listdir(directories):
-                    f.write("XYZ " + file[:-4] +" - " + " A01 " + " spoof" +"\n")
+                    if file[-3:] == 'wav' or file[-3:]=='mp3':
+                        f.write('fake_'+file +" spoof" +"\n")
         f.close()
 
 
@@ -26,7 +28,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "real",
-        type=bool,
+        type=str,
     )
     # parser.add_argument()
     args = parser.parse_args()

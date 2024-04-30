@@ -4,7 +4,7 @@ import argparse
 def make_protocol(args):
     count = 0
     ind = 0
-    with open(f"metadata_custom{ind}.txt", "w") as f:
+    with open(f"metadata/metadata_for{ind}.txt", "w") as f:
         for file in os.listdir(args.in_dir):    
             if file[-3:] == 'wav' or file[-3:]=='mp3':
                 count+=1
@@ -13,7 +13,7 @@ def make_protocol(args):
                 ind+=1
                 count = 0
                 f.close()
-                f =open(f"metadata_custom{ind}.txt", "w")
+                f =open(f"metadata/metadata_for{ind}.txt", "w")
                 f.write(file+"\n")
 
 

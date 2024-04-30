@@ -1,10 +1,9 @@
-git add main*.py
-git add make*.py
-git add model.py
-git add eval*
-git add data*.py
+git add *.py
 git add *.sh
+git add protocol/*.txt
+git add scores/*.txt
+git add 
 git status
-git commit -m "Updated scores of LA & DF on given custom dataset"
+git commit -m "Updated training code"
 git status
 git push -u origin main

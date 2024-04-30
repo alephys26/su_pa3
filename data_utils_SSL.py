@@ -23,7 +23,7 @@ def genSpoof_list( dir_meta,is_train=False,is_eval=False):
 
     if (is_train):
         for line in l_meta:
-             _,key,_,_,label = line.strip().split()
+             key,label = line.split(':')
              
              file_list.append(key)
              d_meta[key] = 1 if label == 'bonafide' else 0
@@ -31,13 +31,13 @@ def genSpoof_list( dir_meta,is_train=False,is_eval=False):
     
     elif(is_eval):
         for line in l_meta:
-            key= line.strip()
+            key= line.split()
             file_list.append(key)
         return file_list
     else:
         for line in l_meta:
-             _,key,_,_,label = line.strip().split()
-             
+             key,label = line.split(':')
+                         
              file_list.append(key)
              d_meta[key] = 1 if label == 'bonafide' else 0
         return d_meta,file_list
@@ -72,7 +72,7 @@ class Dataset_ASVspoof2019_train(Dataset):
 
     def __getitem__(self, index):
         utt_id = self.list_IDs[index]
-        X,fs = librosa.load(self.base_dir+'mp3/'+utt_id+'.mp3', sr=16000) 
+        X,fs = librosa.load(self.base_dir+'/'+utt_id, sr=16000) 
         Y=process_Rawboost_feature(X,fs,self.args,self.algo)
         X_pad= pad(Y,self.cut)
         x_inp= Tensor(X_pad)

@@ -217,10 +217,10 @@ if __name__ == '__main__':
 
     assert track in ['LA', 'PA','DF'], 'Invalid track given'
 
-    #database
-    prefix      = 'ASVspoof_{}'.format(track)
-    prefix_2019 = 'ASVspoof2019.{}'.format(track)
-    prefix_2021 = 'ASVspoof2021.{}'.format(track)
+    # #database
+    # prefix      = 'ASVspoof_{}'.format(track)
+    # prefix_2019 = 'ASVspoof2019.{}'.format(track)
+    # prefix_2021 = 'ASVspoof2021.{}'.format(track)
     
     #define model saving path
     model_tag = 'model_{}_{}_{}_{}_{}'.format(
@@ -261,11 +261,11 @@ if __name__ == '__main__':
 
      
     # define train dataloader
-    d_label_trn,file_train = genSpoof_list( dir_meta =  os.path.join(args.protocols_path+'{}_cm_protocols/{}.cm.train.trn.txt'.format(prefix,prefix_2019)),is_train=True,is_eval=False)
+    d_label_trn,file_train = genSpoof_list( dir_meta =  args.protocols_path+'train_for.txt',is_train=True,is_eval=False)
     
     print('no. of training trials',len(file_train))
     
-    train_set=Dataset_ASVspoof2019_train(args,list_IDs = file_train,labels = d_label_trn,base_dir = os.path.join(args.database_path+'{}_{}_train/'.format(prefix_2019.split('.')[0],args.track)),algo=args.algo)
+    train_set=Dataset_ASVspoof2019_train(args,list_IDs = file_train,labels = d_label_trn,base_dir = args.database_path+'/training/combined',algo=args.algo)
     
     train_loader = DataLoader(train_set, batch_size=args.batch_size,num_workers=8, shuffle=True,drop_last = True)
     
@@ -274,13 +274,13 @@ if __name__ == '__main__':
 
     # define validation dataloader
 
-    d_label_dev,file_dev = genSpoof_list( dir_meta =  os.path.join(args.protocols_path+'{}_cm_protocols/{}.cm.dev.trl.txt'.format(prefix,prefix_2019)),is_train=False,is_eval=False)
+    d_label_dev,file_dev = genSpoof_list( dir_meta = args.protocols_path+'val_for.txt',is_train=False,is_eval=False)
     
     print('no. of validation trials',len(file_dev))
     
     dev_set = Dataset_ASVspoof2019_train(args,list_IDs = file_dev,
 		labels = d_label_dev,
-		base_dir = os.path.join(args.database_path+'{}_{}_dev/'.format(prefix_2019.split('.')[0],args.track)),algo=args.algo)
+		base_dir = args.database_path+'/validation/combined',algo=args.algo)
     dev_loader = DataLoader(dev_set, batch_size=args.batch_size,num_workers=8, shuffle=False)
     del dev_set,d_label_dev
 

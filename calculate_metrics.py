@@ -10,7 +10,7 @@ $: python PATH_TO_SCORE_FILE PATH_TO_GROUDTRUTH_DIR phase
 Example:
 $: python evaluate.py score.txt ./keys eval
 """
-import sys, os.path
+import sys
 import numpy as np
 import pandas
 import auc_eer as em
@@ -31,13 +31,13 @@ def eval_to_score_file(score_file, cm_key_file):
         print('CHECK: submission has more columns (%d) than expected (2). Check for leading/ending blank spaces.' % len(submission_scores.columns))
         exit(1)
             
-    cm_scores = submission_scores.merge(cm_data, left_on=0, right_on=1, how='inner')  # check here for progress vs eval set
-    bona_cm = cm_scores[cm_scores[1] == 'bonafide']['1_x'].values
-    spoof_cm = cm_scores[cm_scores[1] == 'spoof']['1_x'].values
-    eer_cm = em.compute_eer(bona_cm, spoof_cm)
-    auc_cm = em.compute_auc(bona_cm, auc_cm)
+    cm_scores = submission_scores.merge(cm_data, left_on=0, right_on=0, how='inner')
+    bona_cm = cm_scores[cm_scores['1_y'] == 'bonafide']['1_x'].values
+    spoof_cm = cm_scores[cm_scores['1_y'] == 'spoof']['1_x'].values
+    eer_cm = em.compute_eer(bona_cm, spoof_cm, submit_file)
+    auc_cm = em.compute_auc(bona_cm, spoof_cm, submit_file)
     out_data = "eer: %.2f\n" % (100*eer_cm)
-    out_data += "auc: %.2f\n" % (100*auc_cm)
+    out_data += "auc: %.2f\n" % (auc_cm)
     print(out_data)
 
 if __name__ == "__main__":

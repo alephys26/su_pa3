@@ -10,7 +10,7 @@ import yaml
 from data_utils_SSL import genSpoof_list,Dataset_ASVspoof2019_train,Dataset_ASVspoof2021_eval
 from model import Model
 from tensorboardX import SummaryWriter
-from core_scripts.startup_config import set_random_seed
+from startup_config import set_random_seed
 
 
 __author__ = "Hemlata Tak"

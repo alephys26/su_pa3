@@ -233,8 +233,7 @@ if __name__ == '__main__':
     if not os.path.exists(model_save_path):
         os.mkdir(model_save_path)
     
-    #GPU device
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'                  
+    device = 'cpu'                  
     print('Device: {}'.format(device))
     
     model = Model(args,device)
@@ -252,9 +251,9 @@ if __name__ == '__main__':
 
     #evaluation 
     if args.eval:
-        file_eval = genSpoof_list( dir_meta =  os.path.join(args.protocols_path+'{}_cm_protocols/{}.cm.eval.trl.txt'.format(prefix,prefix_2021)),is_train=False,is_eval=True)
+        file_eval = genSpoof_list( dir_meta =  args.protocols_path, is_train=False,is_eval=True)
         print('no. of eval trials',len(file_eval))
-        eval_set=Dataset_ASVspoof2021_eval(list_IDs = file_eval,base_dir = os.path.join(args.database_path+'ASVspoof2021_{}_eval/'.format(args.track)))
+        eval_set=Dataset_ASVspoof2021_eval(list_IDs = file_eval,base_dir = args.database_path)
         produce_evaluation_file(eval_set, model, device, args.eval_output)
         sys.exit(0)
    
@@ -302,3 +301,4 @@ if __name__ == '__main__':
                                                    running_loss,val_loss))
         torch.save(model.state_dict(), os.path.join(
             model_save_path, 'epoch_{}.pth'.format(epoch)))
+
